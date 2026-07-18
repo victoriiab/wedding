@@ -1,0 +1,137 @@
+<!DOCTYPE html> 
+<html lang="ru"> 
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Приглашение на свадьбу</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Шапка сайта (Экран приветствия) -->
+    <header>
+        <h2 id="guest-name" style="font-size: 2rem; font-weight: 300; margin-bottom: 10px; color: #8c7e74; font-style: italic;"></h2>
+        <h1>Артур & Виктория</h1>
+        <p>07.08.2026 — День нашей свадьбы</p>
+    </header>
+
+    <!-- Основной блок с информацией -->
+    <main>
+        <section>
+            <h2>Место проведения</h2>
+            <p>Ресторанный комплекс «Версаль», г. Уфа</p>
+            <p>Начало банкета в 17:00</p>
+        </section>
+
+                <!-- Начало секции опроса -->
+        <section class="rsvp-section">
+            <h2>Подтверждение присутствия</h2>
+            <p class="rsvp-subtitle">Пожалуйста, ответьте на несколько вопросов ниже</p>
+
+            <!-- Сама форма. target указывает на скрытый фрейм, чтобы страница не обновлялась -->
+            <form action="ВАШ_URL_FORM_RESPONSE" method="POST" target="hidden_iframe" id="wedding-form">
+                
+                <!-- 1. Имя (заполняется автоматически из ссылки) -->
+                <div class="form-group">
+                    <label for="name">Ваше имя и фамилия</label>
+                    <input type="text" id="name" name="entry.НОМЕР_ИМЕНИ" placeholder="Иван Иванов" required>
+                </div>
+
+                <!-- 2. Присутствие -->
+                <div class="form-group">
+                    <label for="attendance">Сможете ли вы разделить с нами этот день?</label>
+                    <select id="attendance" name="entry.НОМЕР_ПРИСУТСТВИЯ" required>
+                        <option value="" disabled selected>Выберите вариант</option>
+                        <option value="Приду">С удовольствием приду (придем)</option>
+                        <option value="Не приду">К сожалению, не смогу (сможем)</option>
+                    </select>
+                </div>
+
+                <!-- 3. Количество гостей (Идеально для семей с детьми) -->
+                <div class="form-group">
+                    <label for="guests-count">Общее количество человек (включая детей)</label>
+                    <select id="guests-count" name="entry.НОМЕР_КОЛИЧЕСТВА" required>
+                        <option value="1 человек" selected>1 человек</option>
+                        <option value="2 человека">2 человека</option>
+                        <option value="3 человека">3 человека</option>
+                        <option value="4 человека">4 человека</option>
+                        <option value="5 и более">5 и более человек</option>
+                    </select>
+                </div>
+
+                <!-- 4. Алкоголь -->
+                <div class="form-group">
+                    <label for="alcohol">Предпочтения по напиткам</label>
+                    <select id="alcohol" name="entry.НОМЕР_АЛКОГОЛЯ" required>
+                        <option value="" disabled selected>Выберите вариант</option>
+                        <option value="Вино">Вино (красное / белое)</option>
+                        <option value="Игристое/Шампанское">Игристое / Шампанское</option>
+                        <option value="Крепкий алкоголь">Крепкие напитки</option>
+                        <option value="Разные напитки">Предпочтения разные</option>
+                        <option value="Не пьем">Мы не пьем алкоголь</option>
+                    </select>
+                </div>
+
+                <!-- 5. Меню -->
+                <div class="form-group">
+                    <label for="food">Особенности в еде</label>
+                    <select id="food" name="entry.НОМЕР_МЕНЮ" required>
+                        <option value="Ем всё" selected>Мясные блюда (едим всё)</option>
+                        <option value="Рыба">Рыбные блюда / морепродукты</option>
+                        <option value="Вегетарианцы">Вегетарианское меню</option>
+                        <option value="Аллергия">Есть аллергия (укажем в комментарии)</option>
+                    </select>
+                </div>
+
+                <!-- 6. Комментарий -->
+                <div class="form-group">
+                    <label for="comments">Дополнительные комментарии</label>
+                    <textarea id="comments" name="entry.НОМЕР_КОММЕНТАРИЯ" placeholder="Здесь вы можете написать имена детей, детали по аллергенам или любые пожелания" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Отправить ответ</button>
+                
+                <p id="success-message" style="display:none; color: #8c7e74; margin-top: 20px; font-style: italic; font-size: 1.2rem;">
+                    Спасибо! Ваши ответы успешно сохранены.
+                </p>
+            </form>
+
+
+            <!-- Тот самый невидимый iframe, который тихонько принимает ответ от Google -->
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showSuccess(); }"></iframe>
+        </section>
+
+    </main>
+        <script>
+        var submitted = false;
+
+        document.getElementById('wedding-form').addEventListener('submit', function() {
+            submitted = true;
+        });
+
+        function showSuccess() {
+            document.getElementById('wedding-form').querySelectorAll('.form-group, .submit-btn').forEach(function(el) {
+                el.style.display = 'none';
+            });
+            document.getElementById('success-message').style.display = 'block';
+        }
+
+        function initPersonalization() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const guest = urlParams.get('p'); 
+            
+            if (guest) {
+                const decodedName = decodeURIComponent(guest);
+                document.getElementById('guest-name').innerText = decodedName + ",";
+                document.getElementById('name').value = decodedName;
+            }
+        }
+
+        // Запускаем персонализацию при старте
+        initPersonalization();
+    </script>
+
+
+</body>
+</html>
