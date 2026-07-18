@@ -24,23 +24,23 @@
             <p>Начало банкета в 17:00</p>
         </section>
         <!-- Возвращаем авторский дизайн формы -->
+                <!-- Наша красивая форма, подключенная к Formspree -->
         <section class="rsvp-section">
             <h2>Подтверждение присутствия</h2>
             <p class="rsvp-subtitle">Пожалуйста, ответьте на вопросы ниже до 01.07.2026</p>
 
-            <!-- Прямая отправка на форму Google, которую она точно примет -->
-            <form action="https://forms.gle/PGc5Pc5ygQ7Quyxx6" method="POST" id="wedding-form">
+            <form action="https://formspree.io/f/mvzearqw" method="POST" id="wedding-form">
                 
-                <!-- Имя (автозаполнение из ссылки) -->
+                <!-- Имя (автозаполнение из ссылки продолжает работать!) -->
                 <div class="form-group">
                     <label for="name">Ваше имя и фамилия</label>
-                    <input type="text" id="name" name="entry.1458771400" placeholder="Иван Иванов" required>
+                    <input type="text" id="name" name="Имя гостя" placeholder="Иван Иванов" required>
                 </div>
 
                 <!-- Присутствие -->
                 <div class="form-group">
                     <label for="attendance">Сможете ли вы разделить с нами этот день?</label>
-                    <select id="attendance" name="entry.1870036818" required>
+                    <select id="attendance" name="Присутствие" required>
                         <option value="" disabled selected>Выберите вариант</option>
                         <option value="Приду">С удовольствием приду (придем)</option>
                         <option value="Не приду">К сожалению, не смогу (сможем)</option>
@@ -50,7 +50,7 @@
                 <!-- Количество гостей -->
                 <div class="form-group">
                     <label for="guests-count">Общее количество человек (включая детей)</label>
-                    <select id="guests-count" name="entry.1554462007" required>
+                    <select id="guests-count" name="Количество человек" required>
                         <option value="1 человек" selected>1 человек</option>
                         <option value="2 человека">2 человека</option>
                         <option value="3 человека">3 человека</option>
@@ -62,11 +62,11 @@
                 <!-- Алкоголь -->
                 <div class="form-group">
                     <label for="alcohol">Предпочтения по напиткам</label>
-                    <select id="alcohol" name="entry.906380" required>
+                    <select id="alcohol" name="Алкоголь" required>
                         <option value="" disabled selected>Выберите вариант</option>
                         <option value="Вино">Вино (красное / белое)</option>
                         <option value="Игристое/Шампанское">Игристое / Шампанское</option>
-                        <option value="Kрепкий алкоголь">Крепкие напитки</option>
+                        <option value="Крепкий алкоголь">Крепкие напитки</option>
                         <option value="Разные напитки">Предпочтения разные</option>
                         <option value="Не пьем">Мы не пьем алкоголь</option>
                     </select>
@@ -75,7 +75,7 @@
                 <!-- Меню -->
                 <div class="form-group">
                     <label for="food">Особенности в еде</label>
-                    <select id="food" name="entry.1521153755" required>
+                    <select id="food" name="Меню" required>
                         <option value="Ем всё" selected>Мясные блюда (едим всё)</option>
                         <option value="Рыба">Рыбные блюда / морепродукты</option>
                         <option value="Вегетарианцы">Вегетарианское меню</option>
@@ -86,12 +86,13 @@
                 <!-- Комментарий -->
                 <div class="form-group">
                     <label for="comments">Дополнительные комментарии</label>
-                    <textarea id="comments" name="entry.438916306" placeholder="Здесь вы можете написать имена детей, детали по аллергенам или любые пожелания" rows="3"></textarea>
+                    <textarea id="comments" name="Комментарий" placeholder="Здесь вы можете написать имена детей, детали по аллергенам или любые пожелания" rows="3"></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">Отправить ответ</button>
             </form>
         </section>
+
 
 
     </main>
