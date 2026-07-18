@@ -23,85 +23,18 @@
             <p>Ресторанный комплекс «Версаль», г. Уфа</p>
             <p>Начало банкета в 17:00</p>
         </section>
-
                 <!-- Начало секции опроса -->
+                <!-- Новая безопасная секция опроса -->
         <section class="rsvp-section">
             <h2>Подтверждение присутствия</h2>
-            <p class="rsvp-subtitle">Пожалуйста, ответьте на несколько вопросов ниже</p>
+            <p class="rsvp-subtitle">Пожалуйста, ответьте на вопросы ниже до 01.07.2026</p>
 
-            <!-- Сама форма. target указывает на скрытый фрейм, чтобы страница не обновлялась -->
-            <form action="https://forms.gle/AGNwrPxbUibq9kY37" method="POST" target="hidden_iframe" id="wedding-form">
-
-                
-                <!-- 1. Имя (заполняется автоматически из ссылки) -->
-                <div class="form-group">
-                    <label for="name">Ваше имя и фамилия</label>
-                    <input type="text" id="name" name="entry.1458771400" placeholder="Иван Иванов" required>
-                </div>
-
-                <!-- 2. Присутствие -->
-                <div class="form-group">
-                    <label for="attendance">Сможете ли вы разделить с нами этот день?</label>
-                    <select id="attendance" name="entry.1870036818" required>
-                        <option value="" disabled selected>Выберите вариант</option>
-                        <option value="Приду">С удовольствием приду (придем)</option>
-                        <option value="Не приду">К сожалению, не смогу (сможем)</option>
-                    </select>
-                </div>
-
-                <!-- 3. Количество гостей (Идеально для семей с детьми) -->
-                <div class="form-group">
-                    <label for="guests-count">Общее количество человек (включая детей)</label>
-                    <select id="guests-count" name="entry.1554462007" required>
-                        <option value="1 человек" selected>1 человек</option>
-                        <option value="2 человека">2 человека</option>
-                        <option value="3 человека">3 человека</option>
-                        <option value="4 человека">4 человека</option>
-                        <option value="5 и более">5 и более человек</option>
-                    </select>
-                </div>
-
-                <!-- 4. Алкоголь -->
-                <div class="form-group">
-                    <label for="alcohol">Предпочтения по напиткам</label>
-                    <select id="alcohol" name="entry.906380" required>
-                        <option value="" disabled selected>Выберите вариант</option>
-                        <option value="Вино">Вино (красное / белое)</option>
-                        <option value="Игристое/Шампанское">Игристое / Шампанское</option>
-                        <option value="Крепкий алкоголь">Крепкие напитки</option>
-                        <option value="Разные напитки">Предпочтения разные</option>
-                        <option value="Не пьем">Мы не пьем алкоголь</option>
-                    </select>
-                </div>
-
-                <!-- 5. Меню -->
-                <div class="form-group">
-                    <label for="food">Особенности в еде</label>
-                    <select id="food" name="entry.1521153755" required>
-                        <option value="Ем всё" selected>Мясные блюда (едим всё)</option>
-                        <option value="Рыба">Рыбные блюда / морепродукты</option>
-                        <option value="Вегетарианцы">Вегетарианское меню</option>
-                        <option value="Аллергия">Есть аллергия (укажем в комментарии)</option>
-                    </select>
-                </div>
-
-                <!-- 6. Комментарий -->
-                <div class="form-group">
-                    <label for="comments">Дополнительные комментарии</label>
-                    <textarea id="comments" name="entry.438916306" placeholder="Здесь вы можете написать имена детей, детали по аллергенам или любые пожелания" rows="3"></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Отправить ответ</button>
-                
-                <p id="success-message" style="display:none; color: #8c7e74; margin-top: 20px; font-style: italic; font-size: 1.2rem;">
-                    Спасибо! Ваши ответы успешно сохранены.
-                </p>
-            </form>
-
-
-            <!-- Тот самый невидимый iframe, который тихонько принимает ответ от Google -->
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showSuccess(); }"></iframe>
+            <!-- Вставляем саму форму в виде чистого документа. Браузер поймет, что её заполняет реальный человек -->
+            <div class="form-container">
+                <iframe src="https://forms.gle/AGNwrPxbUibq9kY37" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe>
+            </div>
         </section>
+
 
     </main>
         <script>

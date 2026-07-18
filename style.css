@@ -129,3 +129,25 @@ section p {
 .submit-btn:hover {
     background-color: #6e6157; /* Кнопка красиво темнеет при наведении */
 }
+/* СТИЛИ ДЛЯ БЕЗОПАСНОЙ ФОРМЫ */
+.rsvp-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid #e8e1d7; /* Красивая тонкая разделительная линия */
+}
+
+.rsvp-subtitle {
+    font-style: italic;
+    color: #8c7e74;
+    margin-bottom: 35px;
+    font-size: 1.2rem;
+}
+
+.form-container {
+    max-width: 550px; /* Ограничиваем форму по ширине */
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 1px solid #e8e1d7; /* Аккуратная рамка в тон сайта */
+    padding: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02); /* Легкая, почти невидимая тень для объема */
+}
